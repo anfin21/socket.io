@@ -10,3 +10,4 @@ __debug_bin*
 /engine.io/examples/client/client
 
 *.env
+.idea
