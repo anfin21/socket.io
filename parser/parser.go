@@ -1,6 +1,9 @@
 package parser
 
-import "reflect"
+import (
+	"github.com/karagenc/socket.io-go/parser/json/serializer"
+	"reflect"
+)
 
 const ProtocolVersion = 5
 
@@ -14,4 +17,5 @@ type Parser interface {
 	Encode(header *PacketHeader, v any) (buffers [][]byte, err error)
 	Add(data []byte, finish Finish) error
 	Reset()
+	JSONSerializer() serializer.JSONSerializer
 }

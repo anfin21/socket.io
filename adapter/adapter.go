@@ -1,6 +1,7 @@
 package adapter
 
 import (
+	"encoding/json"
 	"time"
 
 	mapset "github.com/deckarep/golang-set/v2"
@@ -70,11 +71,41 @@ type (
 		EmittedAt time.Time
 		Opts      *BroadcastOptions
 
-		Header *parser.PacketHeader
-		Data   []any
+		Header      *parser.PacketHeader
+		Data        []any
+		EncodedData [][]byte
 	}
 )
 
 func (p *PersistedPacket) HasExpired(maxDisconnectDuration time.Duration) bool {
 	return time.Now().Before(p.EmittedAt.Add(maxDisconnectDuration))
+}
+
+func (s SessionToPersist) MarshalBinary() ([]byte, error) {
+	return json.Marshal(struct {
+		SID   SocketID
+		PID   PrivateSessionID
+		Rooms []Room
+	}{
+		SID:   s.SID,
+		PID:   s.PID,
+		Rooms: s.Rooms,
+	})
+}
+
+func (s *SessionToPersist) UnmarshalBinary(data []byte) error {
+	var tmp struct {
+		SID   SocketID
+		PID   PrivateSessionID
+		Rooms []Room
+	}
+	err := json.Unmarshal(data, &tmp)
+	if err != nil {
+		return err
+	}
+
+	s.SID = tmp.SID
+	s.PID = tmp.PID
+	s.Rooms = tmp.Rooms
+	return nil
 }

@@ -1,6 +1,7 @@
 package adapter
 
 import (
+	"encoding/json"
 	"fmt"
 	"reflect"
 
@@ -169,4 +170,26 @@ func (b *BroadcastOperator) DisconnectSockets(close bool) {
 	opts.Flags = b.flags
 
 	b.adapter.DisconnectSockets(opts, close)
+}
+
+func (b BroadcastOptions) MarshalBinary() ([]byte, error) {
+	return json.Marshal(b)
+}
+
+func (b *BroadcastOptions) UnmarshalJSON(data []byte) error {
+	var optsJson struct {
+		Rooms  []Room
+		Except []Room
+		Flags  BroadcastFlags
+	}
+	err := json.Unmarshal(data, &optsJson)
+	if err != nil {
+		return err
+	}
+
+	b.Flags = optsJson.Flags
+	b.Rooms = mapset.NewSet[Room](optsJson.Rooms...)
+	b.Except = mapset.NewSet[Room](optsJson.Except...)
+
+	return nil
 }

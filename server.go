@@ -1,6 +1,7 @@
 package sio
 
 import (
+	"fmt"
 	"net/http"
 	"time"
 
@@ -285,6 +286,7 @@ func (s *Server) IsClosed() bool {
 
 // Shut down the server. Server cannot be restarted once it is closed.
 func (s *Server) Close() error {
+	fmt.Print("io server shutdown")
 	for _, _socket := range s.Sockets() {
 		socket := _socket.(*serverSocket)
 		socket.onClose(ReasonServerShuttingDown)

@@ -1,11 +1,16 @@
 package main
 
 import (
+	"context"
 	"fmt"
+	"github.com/karagenc/socket.io-go/adapter"
+	"github.com/redis/go-redis/v9"
 	"log"
 	"net/http"
 	"os"
+	"os/signal"
 	"strings"
+	"syscall"
 	"time"
 
 	sio "github.com/karagenc/socket.io-go"
@@ -14,7 +19,7 @@ import (
 )
 
 const (
-	addr     = "127.0.0.1:3000"
+	addr     = "127.0.0.1:3001"
 	certFile = "cert.pem"
 	keyFile  = "key.pem"
 )
@@ -36,7 +41,22 @@ func main() {
 	wtServer = &webtransport.Server{
 		H3: http3.Server{Addr: addr},
 	}
+	redisCli := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "",
+		DB:       0,
+	})
+	_, err := redisCli.Ping(context.Background()).Result()
+	if err != nil {
+		log.Fatalf("Could not connect to Redis: %v", err)
+	}
+	defer redisCli.Close()
+
 	config.EIO.WebTransportServer = wtServer
+	config.AdapterCreator = adapter.NewRedisStreamAdapterCreator(redisCli, nil)
+	config.ServerConnectionStateRecovery.Enabled = true
+	config.ServerConnectionStateRecovery.MaxDisconnectionDuration = 1 * time.Hour
+	config.ServerConnectionStateRecovery.UseMiddlewares = false
 
 	io := sio.NewServer(&config)
 
@@ -83,17 +103,34 @@ func main() {
 	}
 	wtServer.H3.Handler = io
 
-	fmt.Printf("Listening on: %s\n", addr)
-	if useTLS {
-		go wtServer.ListenAndServeTLS(certFile, keyFile)
-		err := server.ListenAndServeTLS(certFile, keyFile)
-		if err != nil && err != http.ErrServerClosed {
-			log.Fatalln(err)
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
+
+	go func() {
+		fmt.Printf("Listening on: %s\n", addr)
+		if useTLS {
+			go wtServer.ListenAndServeTLS(certFile, keyFile)
+			err := server.ListenAndServeTLS(certFile, keyFile)
+			if err != nil && err != http.ErrServerClosed {
+				log.Fatalln(err)
+			}
+		} else {
+			err := server.ListenAndServe()
+			if err != nil && err != http.ErrServerClosed {
+				log.Fatalln(err)
+			}
 		}
-	} else {
-		err := server.ListenAndServe()
-		if err != nil && err != http.ErrServerClosed {
-			log.Fatalln(err)
-		}
+	}()
+
+	<-stop
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(ctx); err != nil {
+		log.Fatalf("Server forced to shutdown: %s", err)
+	}
+
+	if err = io.Close(); err != nil {
+		log.Fatalf("Server forced to shutdown: %s", err)
 	}
 }

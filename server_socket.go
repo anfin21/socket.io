@@ -83,11 +83,15 @@ func newServerSocket(
 		s.recovered = true
 		s.Join(previousSession.Rooms...)
 		for _, missedPacket := range previousSession.MissedPackets {
-			buffers, err := s.parser.Encode(missedPacket.Header, &missedPacket.Data)
-			if err != nil {
-				return nil, err
+			if missedPacket.EncodedData != nil {
+				s.conn.sendBuffers(missedPacket.EncodedData...)
+			} else {
+				buffers, err := s.parser.Encode(missedPacket.Header, &missedPacket.Data)
+				if err != nil {
+					return nil, err
+				}
+				s.conn.sendBuffers(buffers...)
 			}
-			s.conn.sendBuffers(buffers...)
 		}
 	} else {
 		id, err := eio.GenerateBase64ID(eio.Base64IDSize)

@@ -1,6 +1,9 @@
 package parser
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 var errInvalidPacketType = fmt.Errorf("parser: invalid packet type")
 
@@ -52,4 +55,12 @@ func (p *PacketHeader) IsEvent() bool {
 
 func (p *PacketHeader) IsAck() bool {
 	return p.Type == PacketTypeAck || p.Type == PacketTypeBinaryAck
+}
+
+func (p PacketHeader) MarshalBinary() ([]byte, error) {
+	return json.Marshal(&p)
+}
+
+func (p *PacketHeader) UnmarshalBinary(data []byte) error {
+	return json.Unmarshal(data, &p)
 }

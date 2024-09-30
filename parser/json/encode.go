@@ -3,6 +3,7 @@ package jsonparser
 import (
 	"bytes"
 	"fmt"
+	"github.com/karagenc/socket.io-go/parser/json/serializer"
 	"reflect"
 	"strconv"
 
@@ -130,4 +131,8 @@ func (p *Parser) encodeBinary(header *parser.PacketHeader, v any) (buffers [][]b
 
 	buffers = append([][]byte{s}, buffers...)
 	return
+}
+
+func (p *Parser) JSONSerializer() serializer.JSONSerializer {
+	return p.json
 }
