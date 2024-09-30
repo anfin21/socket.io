@@ -8,9 +8,9 @@ Note that go-json's version is `0.10.0` at the time of writing. Please consider 
 
 ```go
 import (
-    sio "github.com/karagenc/socket.io-go"
-    jsonparser "github.com/karagenc/socket.io-go/parser/json"
-    gojson "github.com/karagenc/socket.io-go/parser/json/serializer/go-json"
+    sio "github.com/hhuuson97/socket.io-go"
+    jsonparser "github.com/hhuuson97/socket.io-go/parser/json"
+    gojson "github.com/hhuuson97/socket.io-go/parser/json/serializer/go-json"
     "github.com/goccy/go-json"
 )
 

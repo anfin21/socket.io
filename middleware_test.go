@@ -5,8 +5,8 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/karagenc/socket.io-go/internal/sync"
-	"github.com/karagenc/socket.io-go/internal/utils"
+	"github.com/hhuuson97/socket.io-go/internal/sync"
+	"github.com/hhuuson97/socket.io-go/internal/utils"
 	"github.com/mitchellh/mapstructure"
 	"github.com/stretchr/testify/assert"
 )

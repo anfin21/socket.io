@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/gookit/color"
-	sio "github.com/karagenc/socket.io-go"
+	sio "github.com/hhuuson97/socket.io-go"
 	"golang.org/x/term"
 )
 

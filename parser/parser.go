@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/karagenc/socket.io-go/parser/json/serializer"
+	"github.com/hhuuson97/socket.io-go/parser/json/serializer"
 	"reflect"
 )
 

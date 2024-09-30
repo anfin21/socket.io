@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/cristalhq/jsn"
-	"github.com/karagenc/socket.io-go/parser"
-	"github.com/karagenc/socket.io-go/parser/json/serializer/stdjson"
+	"github.com/hhuuson97/socket.io-go/parser"
+	"github.com/hhuuson97/socket.io-go/parser/json/serializer/stdjson"
 )
 
 func TestEncode(t *testing.T) {

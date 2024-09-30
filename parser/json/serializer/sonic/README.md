@@ -10,9 +10,9 @@ In the below code, you can see the recommended configuration options. I explaine
 
 ```go
 import (
-    sio "github.com/karagenc/socket.io-go"
-    jsonparser "github.com/karagenc/socket.io-go/parser/json"
-    "github.com/karagenc/socket.io-go/parser/json/serializer/sonic"
+    sio "github.com/hhuuson97/socket.io-go"
+    jsonparser "github.com/hhuuson97/socket.io-go/parser/json"
+    "github.com/hhuuson97/socket.io-go/parser/json/serializer/sonic"
 )
 
 func main() {

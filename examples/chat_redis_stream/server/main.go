@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/karagenc/socket.io-go/adapter"
+	"github.com/hhuuson97/socket.io-go/adapter"
 	"github.com/redis/go-redis/v9"
 	"log"
 	"net/http"
@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	sio "github.com/karagenc/socket.io-go"
+	sio "github.com/hhuuson97/socket.io-go"
 	"github.com/quic-go/quic-go/http3"
 	"github.com/quic-go/webtransport-go"
 )

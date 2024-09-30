@@ -6,7 +6,7 @@ import (
 	"io"
 
 	"github.com/bytedance/sonic"
-	"github.com/karagenc/socket.io-go/parser/json/serializer"
+	"github.com/hhuuson97/socket.io-go/parser/json/serializer"
 )
 
 type Config = sonic.Config

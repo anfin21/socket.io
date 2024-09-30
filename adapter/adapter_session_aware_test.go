@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/karagenc/socket.io-go/parser"
-	jsonparser "github.com/karagenc/socket.io-go/parser/json"
-	"github.com/karagenc/socket.io-go/parser/json/serializer/stdjson"
+	"github.com/hhuuson97/socket.io-go/parser"
+	jsonparser "github.com/hhuuson97/socket.io-go/parser/json"
+	"github.com/hhuuson97/socket.io-go/parser/json/serializer/stdjson"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

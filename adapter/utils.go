@@ -1,7 +1,7 @@
 package adapter
 
 import (
-	"github.com/karagenc/socket.io-go/internal/sync"
+	"github.com/hhuuson97/socket.io-go/internal/sync"
 )
 
 type TestSocketStore struct {

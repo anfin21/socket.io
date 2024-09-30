@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	eio "github.com/karagenc/socket.io-go/engine.io"
-	"github.com/karagenc/socket.io-go/internal/sync"
-	"github.com/karagenc/socket.io-go/internal/utils"
+	eio "github.com/hhuuson97/socket.io-go/engine.io"
+	"github.com/hhuuson97/socket.io-go/internal/sync"
+	"github.com/hhuuson97/socket.io-go/internal/utils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"nhooyr.io/websocket"

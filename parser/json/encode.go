@@ -3,11 +3,11 @@ package jsonparser
 import (
 	"bytes"
 	"fmt"
-	"github.com/karagenc/socket.io-go/parser/json/serializer"
+	"github.com/hhuuson97/socket.io-go/parser/json/serializer"
 	"reflect"
 	"strconv"
 
-	"github.com/karagenc/socket.io-go/parser"
+	"github.com/hhuuson97/socket.io-go/parser"
 )
 
 var (

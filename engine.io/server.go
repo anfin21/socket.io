@@ -7,14 +7,14 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/karagenc/socket.io-go/internal/sync"
+	"github.com/hhuuson97/socket.io-go/internal/sync"
 	"github.com/quic-go/webtransport-go"
 
-	"github.com/karagenc/socket.io-go/engine.io/parser"
-	"github.com/karagenc/socket.io-go/engine.io/transport"
-	"github.com/karagenc/socket.io-go/engine.io/transport/polling"
-	_websocket "github.com/karagenc/socket.io-go/engine.io/transport/websocket"
-	_webtransport "github.com/karagenc/socket.io-go/engine.io/transport/webtransport"
+	"github.com/hhuuson97/socket.io-go/engine.io/parser"
+	"github.com/hhuuson97/socket.io-go/engine.io/transport"
+	"github.com/hhuuson97/socket.io-go/engine.io/transport/polling"
+	_websocket "github.com/hhuuson97/socket.io-go/engine.io/transport/websocket"
+	_webtransport "github.com/hhuuson97/socket.io-go/engine.io/transport/webtransport"
 
 	"nhooyr.io/websocket"
 )

@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/karagenc/socket.io-go/engine.io/transport"
+	"github.com/hhuuson97/socket.io-go/engine.io/transport"
 	"github.com/quic-go/webtransport-go"
 	"nhooyr.io/websocket"
 )

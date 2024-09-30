@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	mapset "github.com/deckarep/golang-set/v2"
-	"github.com/karagenc/socket.io-go/parser"
+	"github.com/hhuuson97/socket.io-go/parser"
 	"github.com/karagenc/yeast"
 	"github.com/redis/go-redis/v9"
 	"log"
