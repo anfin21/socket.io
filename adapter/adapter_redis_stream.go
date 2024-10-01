@@ -3,6 +3,7 @@ package adapter
 import (
 	"bytes"
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	mapset "github.com/deckarep/golang-set/v2"
@@ -105,8 +106,19 @@ func (m *RedisStreamMessage) Parse(msg redis.XMessage) error {
 	if err != nil {
 		log.Fatalf("Error marshaling data to JSON: %v", err)
 	}
-	for _, d := range tmp {
-		m.Buffers = append(m.Buffers, []byte(d))
+	if m.Header.IsBinary() {
+		for _, d := range tmp {
+			b, err := base64.StdEncoding.DecodeString(d)
+			if err != nil {
+				log.Fatalf("Error unmarshaling data to JSON: %v", err)
+			}
+
+			m.Buffers = append(m.Buffers, b)
+		}
+	} else {
+		for _, d := range tmp {
+			m.Buffers = append(m.Buffers, []byte(d))
+		}
 	}
 
 	err = json.Unmarshal([]byte(msg.Values["opts"].(string)), &m.Opts)
@@ -128,8 +140,14 @@ func (m *RedisStreamMessage) Parse(msg redis.XMessage) error {
 
 func (m RedisStreamMessage) ToStreamData() map[string]interface{} {
 	b := make([]string, 0)
-	for _, t := range m.Buffers {
-		b = append(b, string(t))
+	if m.Header.IsBinary() {
+		for _, t := range m.Buffers {
+			b = append(b, base64.StdEncoding.EncodeToString(t))
+		}
+	} else {
+		for _, t := range m.Buffers {
+			b = append(b, string(t))
+		}
 	}
 
 	buffers, err := json.Marshal(b)
@@ -482,7 +500,7 @@ func (a *RedisStreamAdapter) PersistSession(session *SessionToPersist) {
 
 func (a *RedisStreamAdapter) RestoreSession(pid PrivateSessionID, offset string) (session *SessionToPersist, ok bool) {
 	session = &SessionToPersist{}
-	err := a.redisClient.Get(a.ctx, fmt.Sprintf("%s%s", DEFAULT_SESSION_KEY_PREFIX, pid)).Scan(session)
+	err := a.redisClient.GetDel(a.ctx, fmt.Sprintf("%s%s", DEFAULT_SESSION_KEY_PREFIX, pid)).Scan(session)
 	if err != nil {
 		return nil, false
 	}
