@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	eio "github.com/hhuuson97/socket.io-go/engine.io"
-	"github.com/hhuuson97/socket.io-go/engine.io/parser"
+	eio "github.com/anfin21/socket.io/engine.io"
+	"github.com/anfin21/socket.io/engine.io/parser"
 )
 
 var exitChan = make(chan struct{})

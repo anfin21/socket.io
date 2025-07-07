@@ -4,9 +4,9 @@ import (
 	"math"
 	"time"
 
-	eio "github.com/hhuuson97/socket.io-go/engine.io"
-	"github.com/hhuuson97/socket.io-go/engine.io/parser"
-	"github.com/hhuuson97/socket.io-go/internal/sync"
+	eio "github.com/anfin21/socket.io/engine.io"
+	"github.com/anfin21/socket.io/engine.io/parser"
+	"github.com/anfin21/socket.io/internal/sync"
 )
 
 // Manager methods that are directly related to

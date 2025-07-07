@@ -5,8 +5,8 @@ package sonic
 import (
 	"io"
 
+	"github.com/anfin21/socket.io/parser/json/serializer"
 	"github.com/bytedance/sonic"
-	"github.com/hhuuson97/socket.io-go/parser/json/serializer"
 )
 
 type Config = sonic.Config

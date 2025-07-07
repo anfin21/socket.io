@@ -7,7 +7,7 @@ import (
 
 	mapset "github.com/deckarep/golang-set/v2"
 
-	"github.com/hhuuson97/socket.io-go/parser"
+	"github.com/anfin21/socket.io/parser"
 )
 
 type (

@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hhuuson97/socket.io-go/engine.io/parser"
+	"github.com/anfin21/socket.io/engine.io/parser"
 	"github.com/stretchr/testify/require"
 )
 

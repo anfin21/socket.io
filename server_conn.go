@@ -7,11 +7,11 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/hhuuson97/socket.io-go/internal/sync"
+	"github.com/anfin21/socket.io/internal/sync"
 
-	eio "github.com/hhuuson97/socket.io-go/engine.io"
-	eioparser "github.com/hhuuson97/socket.io-go/engine.io/parser"
-	"github.com/hhuuson97/socket.io-go/parser"
+	eio "github.com/anfin21/socket.io/engine.io"
+	eioparser "github.com/anfin21/socket.io/engine.io/parser"
+	"github.com/anfin21/socket.io/parser"
 )
 
 // This struct represents a connection to the server.

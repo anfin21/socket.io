@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	sio "github.com/hhuuson97/socket.io-go"
+	sio "github.com/anfin21/socket.io"
 	"github.com/quic-go/quic-go/http3"
 	"github.com/quic-go/webtransport-go"
 )

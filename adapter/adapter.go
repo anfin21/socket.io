@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"time"
 
+	"github.com/anfin21/socket.io/parser"
 	mapset "github.com/deckarep/golang-set/v2"
-	"github.com/hhuuson97/socket.io-go/parser"
 )
 
 type (

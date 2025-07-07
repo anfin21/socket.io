@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/hhuuson97/socket.io-go/parser"
+	"github.com/anfin21/socket.io/parser"
 )
 
 var (

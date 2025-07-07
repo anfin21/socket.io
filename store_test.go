@@ -5,10 +5,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hhuuson97/socket.io-go/internal/sync"
-	"github.com/hhuuson97/socket.io-go/internal/utils"
+	"github.com/anfin21/socket.io/internal/sync"
+	"github.com/anfin21/socket.io/internal/utils"
 
-	"github.com/hhuuson97/socket.io-go/parser"
+	"github.com/anfin21/socket.io/parser"
 	"github.com/stretchr/testify/require"
 )
 

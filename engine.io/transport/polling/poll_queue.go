@@ -3,9 +3,9 @@ package polling
 import (
 	"time"
 
-	"github.com/hhuuson97/socket.io-go/internal/sync"
+	"github.com/anfin21/socket.io/internal/sync"
 
-	"github.com/hhuuson97/socket.io-go/engine.io/parser"
+	"github.com/anfin21/socket.io/engine.io/parser"
 )
 
 type pollQueue struct {

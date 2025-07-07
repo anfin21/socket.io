@@ -3,10 +3,10 @@ package sio
 import (
 	"reflect"
 
-	"github.com/hhuuson97/socket.io-go/internal/sync"
+	"github.com/anfin21/socket.io/internal/sync"
 
-	"github.com/hhuuson97/socket.io-go/adapter"
-	"github.com/hhuuson97/socket.io-go/parser"
+	"github.com/anfin21/socket.io/adapter"
+	"github.com/anfin21/socket.io/parser"
 )
 
 type (

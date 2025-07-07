@@ -9,8 +9,8 @@ import (
 	"syscall"
 	"time"
 
+	sio "github.com/anfin21/socket.io"
 	"github.com/gookit/color"
-	sio "github.com/hhuuson97/socket.io-go"
 	"golang.org/x/term"
 )
 

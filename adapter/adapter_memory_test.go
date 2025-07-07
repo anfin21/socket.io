@@ -3,10 +3,10 @@ package adapter
 import (
 	"testing"
 
+	"github.com/anfin21/socket.io/parser"
+	jsonparser "github.com/anfin21/socket.io/parser/json"
+	"github.com/anfin21/socket.io/parser/json/serializer/stdjson"
 	mapset "github.com/deckarep/golang-set/v2"
-	"github.com/hhuuson97/socket.io-go/parser"
-	jsonparser "github.com/hhuuson97/socket.io-go/parser/json"
-	"github.com/hhuuson97/socket.io-go/parser/json/serializer/stdjson"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

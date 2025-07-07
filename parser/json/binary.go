@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/hhuuson97/socket.io-go/parser"
-	"github.com/hhuuson97/socket.io-go/parser/json/serializer"
+	"github.com/anfin21/socket.io/parser"
+	"github.com/anfin21/socket.io/parser/json/serializer"
 )
 
 var errBinaryCannotBeAPtr = fmt.Errorf("parser/json: sio.Binary cannot be a pointer")

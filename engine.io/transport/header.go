@@ -3,7 +3,7 @@ package transport
 import (
 	"net/http"
 
-	"github.com/hhuuson97/socket.io-go/internal/sync"
+	"github.com/anfin21/socket.io/internal/sync"
 )
 
 // A concurrent HTTP request header.

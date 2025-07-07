@@ -3,7 +3,7 @@ package utils
 import (
 	"time"
 
-	"github.com/hhuuson97/socket.io-go/internal/sync"
+	"github.com/anfin21/socket.io/internal/sync"
 )
 
 // This is a sync.WaitGroup with a WaitTimeout function.

@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/anfin21/socket.io/internal/sync"
 	mapset "github.com/deckarep/golang-set/v2"
-	"github.com/hhuuson97/socket.io-go/internal/sync"
 )
 
 const DefaultTestWaitTimeout = time.Second * 12
