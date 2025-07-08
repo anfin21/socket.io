@@ -19,7 +19,7 @@ type ClientTransport struct {
 	requestHeader   *transport.RequestHeader
 
 	dialer *webtransport.Dialer
-	stream webtransport.Stream
+	stream *webtransport.Stream
 	sendMu sync.Mutex
 
 	callbacks *transport.Callbacks

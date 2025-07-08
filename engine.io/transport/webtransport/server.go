@@ -19,7 +19,7 @@ type ServerTransport struct {
 	ctx           context.Context
 	server        *webtransport.Server
 	conn          *webtransport.Session
-	stream        webtransport.Stream
+	stream        *webtransport.Stream
 	limitedReader *limitedReader
 	sendMu        sync.Mutex
 
